@@ -3,7 +3,7 @@ import styles from '../styles/navbar.module.scss'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-export default function Navbar({ done = true }) {
+export default function Navbar({ done = true, settings }) {
   const [checked, setCheked] = useState(false)
   const [hide, setHide] = useState(false)
   const [scrollUp, setScrollUp] = useState({
@@ -125,7 +125,7 @@ export default function Navbar({ done = true }) {
               />
             </svg>
             <label className={styles.nav_cta_mobile_number}>
-              +639 123 234 456
+              {settings.number.numbers[0]}
             </label>
           </div>
           <div className={styles.nav_cta_email_group}>
@@ -143,7 +143,9 @@ export default function Navbar({ done = true }) {
               />
             </svg>
 
-            <label className={styles.nav_cta_email}>email@example.com</label>
+            <label className={styles.nav_cta_email}>
+              {settings.email.emails[0]}
+            </label>
           </div>
           <button className={`${styles.nav_cta} desktop_nav_cta`}>
             Get Certified

@@ -88,7 +88,7 @@
   height: auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1rem 1px repeat(3, auto) 1rem;
+  grid-template-rows: 1rem repeat(3, auto) 1rem;
   justify-items: center;
   grid-row-gap: 2.2rem;
 
@@ -113,12 +113,14 @@
     grid-template-columns: 20px 8fr 20px;
     border-radius: 0.5rem;
     color: $color-darkest;
+
     .who_we_are__icon {
       height: 3rem;
       align-self: center;
       justify-self: center;
       grid-area: 2 / 2;
     }
+
     .who_we_are__heading {
       align-self: center;
       font-size: clamp(2rem, 4vw, 2.1rem);

@@ -3,7 +3,7 @@ import TrainWithUs from '../components/train-with-us'
 import Link from 'next/link'
 import ScrollAnimation from 'react-animate-on-scroll'
 
-export default function IntrouctionSection() {
+export default function IntrouctionSection({ settings }) {
   return (
     <ScrollAnimation animateOnce animateIn="ani-viewport">
       <section className={styles.introduction_cont}>
@@ -15,9 +15,7 @@ export default function IntrouctionSection() {
           />
           <h1 className={styles.who_we_are__heading}>Who We Are</h1>
           <p className={styles.who_we_are__information}>
-            Dolore quis sit ad ex eu veniam culpa occaecat cupidatat
-            exercitation voluptate. Deserunt elit et minim magna pariatur quis
-            exercitation amet consectetur excepteur pariatur.
+            {settings.homepage_who_we_are}
           </p>
           <Link href="/contact_us">
             <button className={styles.who_we_are__cta}>Contact Us</button>
@@ -33,9 +31,7 @@ export default function IntrouctionSection() {
 
           <h1 className={styles.who_we_do__heading}>What We Do</h1>
           <p className={styles.who_we_do__information}>
-            Dolore quis sit ad ex eu veniam culpa occaecat cupidatat
-            exercitation voluptate. Deserunt elit et minim magna pariatur quis
-            exercitation amet consectetur excepteur pariatur.
+            {settings.homepage_what_we_do}
           </p>
           <Link href="/about">
             <button>Read More</button>
@@ -50,15 +46,16 @@ export default function IntrouctionSection() {
 
           <h1 className={styles.services__heading}>Our Services</h1>
           <p className={styles.services__information}>
-            Dolore quis sit ad ex eu veniam culpa occaecat cupidatat
-            exercitation voluptate. Deserunt elit et minim magna pariatur quis
-            exercitation amet consectetur excepteur pariatur.
+            {settings.homepage_our_services}
           </p>
           <Link href="/services">
             <button>Read More</button>
           </Link>
         </div>
-        <TrainWithUs position={{ gridArea: ' 5 / 1 / span 1 / -1' }} />
+        <TrainWithUs
+          settings={settings}
+          position={{ gridArea: ' 5 / 1 / span 1 / -1' }}
+        />
       </section>
     </ScrollAnimation>
   )

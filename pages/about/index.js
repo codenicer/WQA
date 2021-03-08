@@ -5,7 +5,7 @@ import Footer from '../../components/footer'
 import TrainWithUs from '../../components/train-with-us'
 import SectionHeader from '../../components/section-header'
 import Navbar from '../../components/navbar'
-export default function About() {
+export default function About({ settings, headlines }) {
   return (
     <>
       <Head>
@@ -135,7 +135,7 @@ export default function About() {
             maxWidth: '100rem',
           }}
         >
-          <TrainWithUs />
+          <TrainWithUs settings={settings} />
         </div>
 
         <Footer />
