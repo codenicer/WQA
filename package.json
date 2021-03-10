@@ -12,8 +12,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "google-map-react": "^2.1.9",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "next": "10.0.7",
+    "next-cookies": "^2.0.3",
     "next-on-netlify": "^2.9.0",
     "re-carousel": "^2.4.0",
     "react": "17.0.1",

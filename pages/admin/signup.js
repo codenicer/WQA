@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import styles from '../../styles/admin-signup.module.scss'
+import Router from 'next/router'
 
 export default function Signin() {
   const [password, setPassword] = useState('')
@@ -8,17 +9,22 @@ export default function Signin() {
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       return alert('Password are not the same.')
     }
 
-    axios.post('/api/signup', {
+    const res = await axios.post('/api/auth/signup', {
       password,
       username,
       name,
     })
+
+    if (res.status === 201) {
+      document.cookie = `jwt=${res.data}; path=/`
+      Router.push('/admin')
+    }
   }
 
   return (
