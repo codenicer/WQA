@@ -1,0 +1,43 @@
+@import '_variables.scss';
+
+.signup_container {
+  width: 100%;
+  grid-area: 2/ 1;
+  .signup_form_container {
+    background-color: #f2f2f2;
+    min-width: 30rem;
+    min-height: 20rem;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    .form {
+      height: auto;
+
+      .form_title {
+        font-family: 'Teko', sans-serif;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 1rem 0;
+      }
+      .form_group {
+        margin: 1rem 0;
+        display: grid;
+        input {
+          margin-top: 0.5rem;
+          height: 1.2rem;
+          padding: 0.2rem;
+          border-radius: 0.2rem;
+          border: 1px solid rgba(0, 0, 0, 0.411);
+        }
+      }
+
+      .form_group_control_submit {
+        height: 2.2rem;
+      }
+    }
+  }
+}
