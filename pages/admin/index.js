@@ -37,4 +37,6 @@ Admin.getInitialProps = async (ctx) => {
       }
     })
   }
+
+  return {}
 }

@@ -1,18 +1,28 @@
 import axios from 'axios'
 import { useState } from 'react'
 import styles from '../../styles/admin-signin.module.scss'
+import Router from 'next/router'
 
 export default function Signin() {
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault()
 
-    axios.post('/api/signin', {
-      password,
-      username,
-    })
+    try {
+      const res = await axios.post('/api/auth/signin', {
+        password,
+        username,
+      })
+
+      if (res.status === 200) {
+        document.cookie = `jwt=${res.data}; path=/`
+        Router.push('/admin')
+      }
+    } catch (err) {
+      alert(err.message)
+    }
   }
 
   return (

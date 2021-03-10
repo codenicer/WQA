@@ -2,9 +2,6 @@ import { sql } from './mysql'
 import { scrypt, randomBytes } from 'crypto'
 import { promisify } from 'util'
 import jwt from 'jsonwebtoken'
-import { NextApiResponse } from 'next'
-import { serialize } from 'cookie'
-
 export default async (req, res) => {
   const { username, password, name } = req.body
   const asyncScript = promisify(scrypt)
@@ -17,10 +14,9 @@ export default async (req, res) => {
     'INSERT into `user` set name=? ,username=? , password=? ',
     [name, username, hashedPassword],
     function (error, results, fields) {
-      console.log(req.cookies)
       if (error) {
         console.log(error)
-        return res.status(500).send('Server error')
+        return res.status(400).send('Bad request')
       }
 
       const userJwt = jwt.sign(
@@ -28,7 +24,7 @@ export default async (req, res) => {
           name,
           username,
         },
-        'code-nicer'
+        process.env.SECRET || 'code-nicer'
       )
 
       res.status(201).send(userJwt)

@@ -14,16 +14,19 @@ export default function Signin() {
     if (password !== confirmPassword) {
       return alert('Password are not the same.')
     }
+    try {
+      const res = await axios.post('/api/auth/signup', {
+        password,
+        username,
+        name,
+      })
 
-    const res = await axios.post('/api/auth/signup', {
-      password,
-      username,
-      name,
-    })
-
-    if (res.status === 201) {
-      document.cookie = `jwt=${res.data}; path=/`
-      Router.push('/admin')
+      if (res.status === 201) {
+        document.cookie = `jwt=${res.data}; path=/`
+        Router.push('/admin')
+      }
+    } catch (err) {
+      alert(err.message)
     }
   }
 
